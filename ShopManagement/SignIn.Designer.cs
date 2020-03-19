@@ -44,6 +44,8 @@
             this.TB_login.Name = "TB_login";
             this.TB_login.Size = new System.Drawing.Size(100, 20);
             this.TB_login.TabIndex = 0;
+            this.TB_login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_login_KeyDown);
+            this.TB_login.MaxLength = 10;
             // 
             // TB_password
             // 
@@ -52,6 +54,8 @@
             this.TB_password.PasswordChar = '*';
             this.TB_password.Size = new System.Drawing.Size(100, 20);
             this.TB_password.TabIndex = 1;
+            this.TB_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_password_KeyDown);
+            this.TB_password.MaxLength = 10;
             // 
             // Button_signIn
             // 
@@ -93,13 +97,13 @@
             // 
             // LogFailed
             // 
+            this.LogFailed.ForeColor = System.Drawing.Color.Red;
             this.LogFailed.Location = new System.Drawing.Point(208, 125);
             this.LogFailed.Name = "LogFailed";
             this.LogFailed.Size = new System.Drawing.Size(100, 13);
-            this.LogFailed.ForeColor = System.Drawing.Color.Red;
+            this.LogFailed.TabIndex = 7;
             this.LogFailed.Text = "Login Failed";
             this.LogFailed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LogFailed.TabIndex = 7;
             this.LogFailed.Visible = false;
             // 
             // SignIn

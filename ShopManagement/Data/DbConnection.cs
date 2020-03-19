@@ -8,6 +8,7 @@ namespace ShopManagement.Data
 {
     static class DbConnection
     {
+        //Check database connection
         public static bool CheckDbConnection()
         {
             using (var shopContext = new ShopContext())

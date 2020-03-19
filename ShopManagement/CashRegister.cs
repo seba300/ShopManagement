@@ -16,5 +16,9 @@ namespace ShopManagement
         {
             InitializeComponent();
         }
+        public string GetIdEmployee(string idEmployee)
+        {
+            return idEmployee;
+        }
     }
 }
