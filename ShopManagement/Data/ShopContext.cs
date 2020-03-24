@@ -166,20 +166,21 @@ namespace ShopManagement.Data
 
             modelBuilder.Entity<Users>(entity =>
             {
-                entity.HasKey(e => e.Login)
-                    .HasName("PK_Users_1");
+                entity.HasKey(e => e.Iduser);
 
-                entity.Property(e => e.Login)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
+                entity.Property(e => e.Iduser).HasColumnName("IDuser");
 
                 entity.Property(e => e.Idemployee).HasColumnName("IDemployee");
+
+                entity.Property(e => e.Login)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(60)
-                    .IsUnicode(false)
-                    .IsFixedLength();
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.IdemployeeNavigation)
                     .WithMany(p => p.Users)

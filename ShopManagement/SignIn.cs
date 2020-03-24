@@ -1,8 +1,10 @@
-﻿using ShopManagement.Data;
+﻿using IdentityModel.Client;
+using ShopManagement.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,22 +25,22 @@ namespace ShopManagement
                 Application.Exit();
             }
         }
-
         private void B_signIn(object sender, EventArgs e)
         {
             //Takes values from textboxes : login and password
             string login = TB_login.Text;
             string password = TB_password.Text;
-
+           
             //Database connection
             var shopContext = new ShopContext();
 
             var idEmployee = shopContext.Users
-                .Where(x => x.Login == login && x.Password == password)
+                .Where(x => (x.Login == login) && (x.Password == password))
                 .Select(x => x.Idemployee).FirstOrDefault().ToString();
 
+
             //If login and password are correct call OpenNewForm()
-            if(idEmployee!="0")
+            if (idEmployee != "0")
             {
                 OpenNewForm(idEmployee);
             }
