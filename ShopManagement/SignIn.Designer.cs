@@ -46,6 +46,7 @@
             this.TB_login.TabIndex = 0;
             this.TB_login.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_login_KeyDown);
             this.TB_login.MaxLength = 10;
+            this.TB_login.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             // 
             // TB_password
             // 

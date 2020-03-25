@@ -18,12 +18,6 @@ namespace ShopManagement
         public SignIn()
         {
             InitializeComponent();
-
-            if(!DbConnection.CheckDbConnection())
-            {
-                MessageBox.Show("Connection Failed. Call to IT");
-                Application.Exit();
-            }
         }
         private void B_signIn(object sender, EventArgs e)
         {

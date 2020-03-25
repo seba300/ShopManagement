@@ -153,9 +153,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CueTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Data\DbConnection.cs" />
     <Compile Include="CashRegister.cs">
       <SubType>Form</SubType>
@@ -164,6 +161,7 @@
       <DependentUpon>CashRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\ShopContext.cs" />
+    <Compile Include="ReceiptList.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\OrderDetails.cs" />

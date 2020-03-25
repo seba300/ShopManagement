@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ShopManagement.Data;
 
 namespace ShopManagement
 {
@@ -16,8 +17,15 @@ namespace ShopManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SignIn());
-            //Application.Run(new CashRegister());
+
+            if (!DbConnection.CheckDbConnection())
+            {
+                MessageBox.Show("Connection Failed. Call to IT");
+                Application.Exit();
+            }
+
+            //Application.Run(new SignIn());
+            Application.Run(new CashRegister());
         }
     }
 }
