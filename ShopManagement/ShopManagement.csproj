@@ -220,9 +220,6 @@
     <None Include="Images\AddUserIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\SignInIcon.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\SignInIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
