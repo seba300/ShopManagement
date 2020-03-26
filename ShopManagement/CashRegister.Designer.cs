@@ -130,7 +130,6 @@
             this.Load += new System.EventHandler(this.CashRegister_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

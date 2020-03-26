@@ -16,6 +16,7 @@ namespace ShopManagement
 {
     public partial class CashRegister : Form
     {
+        private List<ReceiptList> receiptLists = new List<ReceiptList>();
         public CashRegister()
         {
             InitializeComponent();
@@ -29,64 +30,62 @@ namespace ShopManagement
             if (e.KeyCode == Keys.Enter)
             {
                 int Idproduct = Convert.ToInt32(TB_barcode.Text);
+                TB_barcode.Text = null;
                 TakeProductParamsFromDatabase(Idproduct);
             }
         }
-        private void AddToRegisterListView(int Idproduct)
+        private void AddToRegisterListView(ReceiptList listItem)
         {
+            string[] row = {
+                listItem.ProductName,
+                listItem.Quantity + listItem.UnitQuantity,
+                listItem.UnitPrice.ToString(),
+                listItem.Vat.ToString(),
+                listItem.Discount.ToString(),
+                listItem.Gross.ToString()
+            };
 
+            var lvi = new ListViewItem(row);
+            LV_receipt.Items.Add(lvi);
         }
 
         private void TakeProductParamsFromDatabase(int Idproduct)
         {
-            var shopContext = new ShopContext();
+            var queryResult = new Query();
 
-            var res = shopContext.Products.Join(shopContext.Categories, x => x.Idcategory, y => y.Idcategory, (x, y) => new
-            {
-                Discount = x.Discount,
-                Vat = x.IdcategoryNavigation.Vat,
-                Idproduct = x.Idproduct,
-                Idcategory = x.Idcategory,
-                ProductName = x.ProductName,
-                UnitPrice = x.UnitPrice,
-                UnitQuantity = x.UnitQuantity,
-            })
-                .Where(x => x.Idproduct == Idproduct);
+            receiptLists.Add(queryResult.GetProductInfo(Idproduct));
 
-            List<ReceiptList> receiptLists = new List<ReceiptList>();
-            foreach (var item in res)
+            if (receiptLists.Last().UnitQuantity == "kg")
             {
-                receiptLists.Add(new ReceiptList
-                {
-                    Discount = item.Discount,
-                    Idcategory = item.Idcategory,
-                    Idproduct = item.Idproduct,
-                    ProductName = item.ProductName,
-                    UnitPrice = item.UnitPrice,
-                    UnitQuantity = item.UnitQuantity,
-                    Vat = item.Vat
-                });
+                InsertWeight insertWeight = new InsertWeight();
+                insertWeight.ShowDialog();
+
+                receiptLists.Last().Quantity = insertWeight.GetWeight();
             }
+            else
+            {
+                receiptLists.Last().Quantity = 1f;
+            }
+
+            receiptLists.Last().Gross = GetGross(receiptLists.Last());
+
+            AddToRegisterListView(receiptLists.Last());
+        }
+
+        private decimal GetGross(ReceiptList listItem)
+        {
+            decimal quantity = (decimal)listItem.Quantity;
+            decimal price = listItem.UnitPrice - (listItem.UnitPrice * (listItem.Discount / 100));//Cena = cena jedn z rabatem
+            decimal value = price * quantity; //Wartosc = price *ilosc
+            decimal gross = value + (value * ((decimal)listItem.Vat / 100));//Brutto = wartosc+vat
+
+            //Because in database i have type money which is not rounded to two places after pointer
+            return Math.Round(gross,2);
         }
 
         private void CashRegister_Load(object sender, EventArgs e)
         {
             TB_barcode.Select();
-
-            string[] row = { "1", "2", "3", "4", "5", "6"};
-            var lvi = new ListViewItem(row);
-            LV_receipt.Items.Add(lvi);
-
-            var lvi2 = new ListViewItem(row);
-            LV_receipt.Items.Add(lvi2);
-
-            
-
-            ////One method add one by one col
-            //string[] row = { "1", "2", "3", "4", "5", "6", "7" };
-            //var lvi = new ListViewItem(row);
-            //lvi.SubItems[1].Text = "!2";
-            //LV_receipt.Items.Add(lvi);
         }
     }
 }

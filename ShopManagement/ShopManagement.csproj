@@ -160,7 +160,14 @@
     <Compile Include="CashRegister.Designer.cs">
       <DependentUpon>CashRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\Query.cs" />
     <Compile Include="Data\ShopContext.cs" />
+    <Compile Include="InsertWeight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InsertWeight.Designer.cs">
+      <DependentUpon>InsertWeight.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReceiptList.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Employees.cs" />
@@ -178,6 +185,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CashRegister.resx">
       <DependentUpon>CashRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InsertWeight.resx">
+      <DependentUpon>InsertWeight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
