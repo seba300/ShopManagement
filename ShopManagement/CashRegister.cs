@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,7 +91,7 @@ namespace ShopManagement
             decimal price = listItem.UnitPrice - (listItem.UnitPrice * (listItem.Discount / 100));//Cena = cena jedn z rabatem
             decimal value = price * quantity; //Wartosc = price *ilosc
             decimal gross = value + (value * ((decimal)listItem.Vat / 100));//Brutto = wartosc+vat
-
+            
             //Because in database i have type money which is not rounded to two places after pointer
             return Math.Round(gross, 2);
         }
@@ -102,7 +103,9 @@ namespace ShopManagement
 
         private void B_closeRegister_Click(object sender, EventArgs e)
         {
-            CloseOrder();
+            //CloseOrder();
+            PrintReceipt();
+            //PrintPriceToPay();
             ClearReceipt();
         }
 
@@ -114,6 +117,49 @@ namespace ShopManagement
         private void ClearReceipt()
         {
             LV_receipt.Items.Clear();
+            receiptLists.Clear();
+        }
+
+        private void PrintPriceToPay()
+        {
+            decimal toPay=0;
+            foreach (var item in receiptLists)
+            {
+                toPay += item.Gross;
+            }
+
+            toPay = Math.Round(toPay, 2);
+            MessageBox.Show("To pay: "+ toPay + "zł");
+        }
+
+        private void PrintReceipt()
+        {
+            Query query = new Query();
+            DateTime thisDate = DateTime.Now;
+
+            //Get acctual order number
+            int idOrder = query.GetIdOrder(IdEmployee);
+
+            //Create unique name for file
+            string receiptName = idOrder + thisDate.ToString("_dd_MM_yyyy");
+
+            string path = @"..\..\Receipts\" + receiptName + ".txt";
+            
+            using(StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("hi");
+                sw.WriteLine(" and hey");
+            }
+
+            using(StreamReader sr = File.OpenText(path))
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    MessageBox.Show(s);
+                }
+            }
+
         }
     }
 }

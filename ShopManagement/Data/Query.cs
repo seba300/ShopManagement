@@ -70,15 +70,11 @@ namespace ShopManagement.Data
 
         public void AddOrderToDatabase(List<ReceiptList> receiptLists, int idEmployee)
         {
-
-            //Orders -> idemployee, selldate <- stworz
             CreateOrder(idEmployee);
 
-            // pobierz -> idorder
             int idOrder = GetIdOrder(idEmployee);
 
-            //order details -> idorder,idproduct, unitprice,quantity,vat,discount
-            AddOrderItems(idOrder, receiptLists);
+            CreateOrderPositions(idOrder, receiptLists);
             //products -> - inventorystate
         }
         //Add to table Orders rows Idemployee and SellDate. IdOrder has identity(1,1)
@@ -93,13 +89,13 @@ namespace ShopManagement.Data
             shopContext.SaveChanges();
         }
         //Return last order created by the specified user
-        private int GetIdOrder(int idEmployee)
+        public int GetIdOrder(int idEmployee)
         {
             int idOrder = shopContext.Orders.Where(x => x.Idemployee == idEmployee).Select(x => x.Idorder).ToList().Last();
 
             return idOrder;
         }
-        private void AddOrderItems(int idOrder, List<ReceiptList> receiptLists)
+        private List<OrderDetails> GroupProductList(int idOrder, List<ReceiptList> receiptLists)
         {
             //Get items from list
             var groupedReceiptItems = receiptLists.GroupBy(x => new
@@ -129,12 +125,30 @@ namespace ShopManagement.Data
 
                 foreach (var quan in product)
                 {
-                    orderDetails.Quantity += quan.Quantity;
+                    orderDetails.Quantity += Math.Round(quan.Quantity, 2);
                 }
 
                 orderDetailsList.Add(orderDetails);
             }
+
+            return orderDetailsList;
         }
-        private void TakeOffStates() { }
+        private void CreateOrderPositions(int idOrder, List<ReceiptList> receiptLists)
+        {
+            List<OrderDetails> orderDetailsList = GroupProductList(idOrder, receiptLists);
+
+            foreach (var item in orderDetailsList)
+            {
+                shopContext.OrderDetails.Add(item);
+            }
+
+            shopContext.SaveChanges();
+        }
+
+        //TODO
+        private void TakeOffStates(List<ReceiptList> receiptLists) 
+        { 
+
+        }
     }
 }

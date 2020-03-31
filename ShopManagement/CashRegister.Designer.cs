@@ -37,6 +37,8 @@
             this.GrossCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TB_barcode = new System.Windows.Forms.TextBox();
             this.B_closeRegister = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LV_receipt
@@ -96,7 +98,7 @@
             // TB_barcode
             // 
             this.TB_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TB_barcode.Location = new System.Drawing.Point(598, 122);
+            this.TB_barcode.Location = new System.Drawing.Point(598, 77);
             this.TB_barcode.MaxLength = 7;
             this.TB_barcode.Name = "TB_barcode";
             this.TB_barcode.Size = new System.Drawing.Size(256, 38);
@@ -106,7 +108,7 @@
             // 
             // B_closeRegister
             // 
-            this.B_closeRegister.Location = new System.Drawing.Point(598, 212);
+            this.B_closeRegister.Location = new System.Drawing.Point(598, 167);
             this.B_closeRegister.Name = "B_closeRegister";
             this.B_closeRegister.Size = new System.Drawing.Size(256, 46);
             this.B_closeRegister.TabIndex = 2;
@@ -114,11 +116,22 @@
             this.B_closeRegister.UseVisualStyleBackColor = true;
             this.B_closeRegister.Click += new System.EventHandler(this.B_closeRegister_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ShopManagement.Properties.Resources.CashIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(598, 308);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(256, 198);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // CashRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 600);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.B_closeRegister);
             this.Controls.Add(this.TB_barcode);
             this.Controls.Add(this.LV_receipt);
@@ -129,6 +142,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cash Register";
             this.Load += new System.EventHandler(this.CashRegister_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +159,6 @@
         private System.Windows.Forms.ColumnHeader DiscCol;
         private System.Windows.Forms.ColumnHeader GrossCol;
         private System.Windows.Forms.Button B_closeRegister;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
