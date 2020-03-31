@@ -1,0 +1,5 @@
+====RECEIPT====
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Bagietka [200g] q:1 g:2,15zł
+n:Porcja Rosołowa Wołowa q:5,57 g:61,49zł

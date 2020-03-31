@@ -47,6 +47,8 @@ namespace ShopManagement
         {
             //Hide this form. This operration doesn't affect to performance
             this.Hide();
+            TB_login.Text = "";
+            TB_password.Text = "";
 
             CashRegister cashRegisterForm = new CashRegister();
 

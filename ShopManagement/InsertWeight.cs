@@ -105,7 +105,10 @@ namespace ShopManagement
         //Confirm
         private void button11_Click(object sender, EventArgs e)
         {
-            CloseForm();
+            if(!string.IsNullOrEmpty(weightResult.Text))
+            {
+                CloseForm();
+            }
         }
         private void CloseForm()
         {

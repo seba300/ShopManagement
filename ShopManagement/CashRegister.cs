@@ -1,4 +1,5 @@
 ﻿using ShopManagement.Data;
+using ShopManagement.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 
 namespace ShopManagement
 {
@@ -25,6 +24,10 @@ namespace ShopManagement
         {
             InitializeComponent();
         }
+        ~CashRegister()
+        {
+            ClearReceipt();
+        }
         //Sign in system is sending here Employeer id to recognize him
         public void GetEmployee(int idEmployee)
         {
@@ -35,11 +38,11 @@ namespace ShopManagement
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if(TB_barcode.Text!="")
+                if (!string.IsNullOrWhiteSpace(TB_barcode.Text))
                 {
                     int Idproduct = Convert.ToInt32(TB_barcode.Text);
                     TB_barcode.Text = null;
-                    TakeProductParamsFromDatabase(Idproduct);
+                    CreateProductList(Idproduct);
                 }
             }
         }
@@ -59,30 +62,38 @@ namespace ShopManagement
             LV_receipt.Items.Add(lvi);
         }
 
-        private void TakeProductParamsFromDatabase(int Idproduct)
+        private void CreateProductList(int Idproduct)
         {
             var queryResult = new Query();
 
-            //Get info of the product with specified ID
-            receiptLists.Add(queryResult.GetProductInfo(Idproduct));
-
-            //If last item of the list has 'kg' then employeer must set how many kilos
-            if (receiptLists.Last().UnitQuantity == "kg")
+            if (queryResult.ExistsProduct(Idproduct))
             {
-                InsertWeight insertWeight = new InsertWeight();
-                insertWeight.ShowDialog();
+                //Get info of the product with specified ID
+                receiptLists.Add(queryResult.GetProductInfo(Idproduct));
 
-                //Get kilos
-                receiptLists.Last().Quantity = insertWeight.GetWeight();
+                //If last item of the list has 'kg' then employeer must set how many kilos
+                if (receiptLists.Last().UnitQuantity == "kg")
+                {
+                    InsertWeight insertWeight = new InsertWeight();
+                    insertWeight.ShowDialog();
+
+                    //Get kilos
+                    receiptLists.Last().Quantity = insertWeight.GetWeight();
+                }
+                else
+                {
+                    receiptLists.Last().Quantity = 1f;
+                }
+
+                receiptLists.Last().Gross = GetGross(receiptLists.Last());
+
+                AddToRegisterListView(receiptLists.Last());
             }
             else
             {
-                receiptLists.Last().Quantity = 1f;
+                MessageBox.Show("The product has not been added to the system");
             }
 
-            receiptLists.Last().Gross = GetGross(receiptLists.Last());
-
-            AddToRegisterListView(receiptLists.Last());
         }
         //Calculation of the gross amount
         private decimal GetGross(ReceiptList listItem)
@@ -91,7 +102,7 @@ namespace ShopManagement
             decimal price = listItem.UnitPrice - (listItem.UnitPrice * (listItem.Discount / 100));//Cena = cena jedn z rabatem
             decimal value = price * quantity; //Wartosc = price *ilosc
             decimal gross = value + (value * ((decimal)listItem.Vat / 100));//Brutto = wartosc+vat
-            
+
             //Because in database i have type money which is not rounded to two places after pointer
             return Math.Round(gross, 2);
         }
@@ -103,9 +114,9 @@ namespace ShopManagement
 
         private void B_closeRegister_Click(object sender, EventArgs e)
         {
-            //CloseOrder();
+            CloseOrder();
             PrintReceipt();
-            //PrintPriceToPay();
+            PrintPriceToPay();
             ClearReceipt();
         }
 
@@ -122,44 +133,54 @@ namespace ShopManagement
 
         private void PrintPriceToPay()
         {
-            decimal toPay=0;
+            decimal toPay = 0;
             foreach (var item in receiptLists)
             {
                 toPay += item.Gross;
             }
 
             toPay = Math.Round(toPay, 2);
-            MessageBox.Show("To pay: "+ toPay + "zł");
+            MessageBox.Show("To pay: " + toPay + "zł");
         }
 
+        //@"ShopManagement/ShopManagement/Receipts/"
         private void PrintReceipt()
         {
             Query query = new Query();
             DateTime thisDate = DateTime.Now;
 
-            //Get acctual order number
+            //Get actual order number
             int idOrder = query.GetIdOrder(IdEmployee);
 
             //Create unique name for file
             string receiptName = idOrder + thisDate.ToString("_dd_MM_yyyy");
 
             string path = @"..\..\Receipts\" + receiptName + ".txt";
-            
-            using(StreamWriter sw = File.CreateText(path))
-            {
-                sw.WriteLine("hi");
-                sw.WriteLine(" and hey");
-            }
 
-            using(StreamReader sr = File.OpenText(path))
+            using (StreamWriter sw = File.CreateText(path))
             {
-                string s = "";
-                while ((s = sr.ReadLine()) != null)
+                sw.WriteLine("====RECEIPT====");
+
+                List<OrderDetails> orderDetailsList = new List<OrderDetails>();
+                orderDetailsList = query.GroupProductList(idOrder, receiptLists);
+
+                foreach (var item in orderDetailsList)
                 {
-                    MessageBox.Show(s);
+                    var gross = receiptLists.Where(x => x.Idproduct == item.Idproduct).Sum(x => x.Gross);
+
+                    sw.WriteLine("n:" + query.GetProductName(item.Idproduct) + " q:" + item.Quantity + " g:" + gross + "zł");
                 }
             }
+        }
 
+        private void B_signOut_Click(object sender, EventArgs e)
+        {
+            SignOut();
+        }
+
+        private void SignOut()
+        {
+            this.Close();
         }
     }
 }

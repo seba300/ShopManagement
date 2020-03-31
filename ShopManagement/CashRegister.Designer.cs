@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashRegister));
             this.LV_receipt = new System.Windows.Forms.ListView();
             this.ProdCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.QuanCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,6 +39,7 @@
             this.TB_barcode = new System.Windows.Forms.TextBox();
             this.B_closeRegister = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.B_signOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +120,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ShopManagement.Properties.Resources.CashIcon;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(598, 308);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(256, 198);
@@ -126,11 +128,22 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // B_signOut
+            // 
+            this.B_signOut.Location = new System.Drawing.Point(598, 534);
+            this.B_signOut.Name = "B_signOut";
+            this.B_signOut.Size = new System.Drawing.Size(256, 54);
+            this.B_signOut.TabIndex = 4;
+            this.B_signOut.Text = "Sign out";
+            this.B_signOut.UseVisualStyleBackColor = true;
+            this.B_signOut.Click += new System.EventHandler(this.B_signOut_Click);
+            // 
             // CashRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 600);
+            this.Controls.Add(this.B_signOut);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.B_closeRegister);
             this.Controls.Add(this.TB_barcode);
@@ -160,5 +173,6 @@
         private System.Windows.Forms.ColumnHeader GrossCol;
         private System.Windows.Forms.Button B_closeRegister;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button B_signOut;
     }
 }

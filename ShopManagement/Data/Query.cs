@@ -39,6 +39,21 @@ namespace ShopManagement.Data
             return idEmployee;
         }
 
+        public bool ExistsProduct(int Idproduct)
+        {
+            return shopContext.Products.Join(shopContext.Categories, x => x.Idcategory, y => y.Idcategory, (x, y) => new
+                    {
+                        Discount = x.Discount,
+                        Vat = x.IdcategoryNavigation.Vat,
+                        Idproduct = x.Idproduct,
+                        Idcategory = x.Idcategory,
+                        ProductName = x.ProductName,
+                        UnitPrice = x.UnitPrice,
+                        UnitQuantity = x.UnitQuantity,
+                    })
+                        .Where(x => x.Idproduct == Idproduct).Any();
+        }
+
         //Returns product information from the list
         public ReceiptList GetProductInfo(int Idproduct)
         {
@@ -95,7 +110,7 @@ namespace ShopManagement.Data
 
             return idOrder;
         }
-        private List<OrderDetails> GroupProductList(int idOrder, List<ReceiptList> receiptLists)
+        public List<OrderDetails> GroupProductList(int idOrder, List<ReceiptList> receiptLists)
         {
             //Get items from list
             var groupedReceiptItems = receiptLists.GroupBy(x => new
@@ -146,9 +161,20 @@ namespace ShopManagement.Data
         }
 
         //TODO
-        private void TakeOffStates(List<ReceiptList> receiptLists) 
-        { 
+        private void TakeOffStates(List<ReceiptList> groupedReceiptLists) 
+        {
+            
+            foreach (var item in groupedReceiptLists)
+            {
+                var inventoryState = shopContext.Products.Where(x => x.Idproduct == item.Idproduct).Select(x => x.InventoryState).ToList().Last();
+                inventoryState = inventoryState - item.Quantity;
+                shopContext.SaveChanges();
+            }
+        }
 
+        public string GetProductName(int idProduct)
+        {
+            return shopContext.Products.Where(x => x.Idproduct == idProduct).Select(x => x.ProductName).ToList().Last();
         }
     }
 }

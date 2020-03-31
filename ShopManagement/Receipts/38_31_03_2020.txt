@@ -1,0 +1,5 @@
+====RECEIPT====
+n:Porcja Rosołowa Wołowa q:1,9 g:20,98zł
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Herbata czarna q:1 g:7,13zł
