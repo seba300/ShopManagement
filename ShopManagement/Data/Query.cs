@@ -90,7 +90,8 @@ namespace ShopManagement.Data
             int idOrder = GetIdOrder(idEmployee);
 
             CreateOrderPositions(idOrder, receiptLists);
-            //products -> - inventorystate
+
+            TakeOffStates(receiptLists);
         }
         //Add to table Orders rows Idemployee and SellDate. IdOrder has identity(1,1)
         private void CreateOrder(int idEmployee)
@@ -159,15 +160,12 @@ namespace ShopManagement.Data
 
             shopContext.SaveChanges();
         }
-
-        //TODO
         private void TakeOffStates(List<ReceiptList> groupedReceiptLists) 
         {
-            
             foreach (var item in groupedReceiptLists)
             {
-                var inventoryState = shopContext.Products.Where(x => x.Idproduct == item.Idproduct).Select(x => x.InventoryState).ToList().Last();
-                inventoryState = inventoryState - item.Quantity;
+                var product = shopContext.Products.SingleOrDefault(x => x.Idproduct == item.Idproduct);
+                product.InventoryState -= Math.Round(item.Quantity,2);
                 shopContext.SaveChanges();
             }
         }
