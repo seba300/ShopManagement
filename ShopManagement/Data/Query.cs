@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,16 @@ namespace ShopManagement.Data
          ~Query()
         {
             shopContext.Dispose();
+        }
+
+        //Return user id using login and password comparison
+        public int GetIdEmployee(string login, string password)
+        {
+            var idEmployee = shopContext.Users
+                .Where(x => (x.Login == login) && (x.Password == password))
+                .Select(x => x.Idemployee).FirstOrDefault();
+
+            return idEmployee;
         }
 
         //Returns product information from the list
@@ -56,5 +67,74 @@ namespace ShopManagement.Data
             }
             return receiptLists;
         }
+
+        public void AddOrderToDatabase(List<ReceiptList> receiptLists, int idEmployee)
+        {
+
+            //Orders -> idemployee, selldate <- stworz
+            CreateOrder(idEmployee);
+
+            // pobierz -> idorder
+            int idOrder = GetIdOrder(idEmployee);
+
+            //order details -> idorder,idproduct, unitprice,quantity,vat,discount
+            AddOrderItems(idOrder, receiptLists);
+            //products -> - inventorystate
+        }
+        //Add to table Orders rows Idemployee and SellDate. IdOrder has identity(1,1)
+        private void CreateOrder(int idEmployee)
+        {
+            Orders order = new Orders();
+
+            order.Idemployee = idEmployee;
+            order.SellDate = DateTime.Now;
+
+            shopContext.Orders.Add(order);
+            shopContext.SaveChanges();
+        }
+        //Return last order created by the specified user
+        private int GetIdOrder(int idEmployee)
+        {
+            int idOrder = shopContext.Orders.Where(x => x.Idemployee == idEmployee).Select(x => x.Idorder).ToList().Last();
+
+            return idOrder;
+        }
+        private void AddOrderItems(int idOrder, List<ReceiptList> receiptLists)
+        {
+            //Get items from list
+            var groupedReceiptItems = receiptLists.GroupBy(x => new
+            {
+                x.Idproduct,
+                x.UnitPrice,
+                x.Vat,
+                x.Discount
+            });
+
+            //Collection that will be use to make insert query
+            List<OrderDetails> orderDetailsList = new List<OrderDetails>();
+
+            OrderDetails orderDetails;
+
+            foreach (var product in groupedReceiptItems)
+            {
+                orderDetails = new OrderDetails();
+
+                orderDetails.Idorder = idOrder;
+                orderDetails.Idproduct = product.Key.Idproduct;
+                orderDetails.UnitPrice = product.Key.UnitPrice;
+                orderDetails.Vat = product.Key.Vat;
+                orderDetails.Discount = product.Key.Discount;
+
+                orderDetails.Quantity = 0;
+
+                foreach (var quan in product)
+                {
+                    orderDetails.Quantity += quan.Quantity;
+                }
+
+                orderDetailsList.Add(orderDetails);
+            }
+        }
+        private void TakeOffStates() { }
     }
 }

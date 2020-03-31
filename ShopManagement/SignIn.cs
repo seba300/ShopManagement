@@ -26,15 +26,13 @@ namespace ShopManagement
             string password = TB_password.Text;
            
             //Database connection
-            var shopContext = new ShopContext();
+            var shopContext = new Query();
 
-            var idEmployee = shopContext.Users
-                .Where(x => (x.Login == login) && (x.Password == password))
-                .Select(x => x.Idemployee).FirstOrDefault().ToString();
+            var idEmployee = shopContext.GetIdEmployee(login, password);
 
 
             //If login and password are correct call OpenNewForm()
-            if (idEmployee != "0")
+            if (idEmployee != 0)
             {
                 OpenNewForm(idEmployee);
             }
@@ -45,14 +43,14 @@ namespace ShopManagement
                 LogFailed.Visible = true;
             }
         }
-        private void OpenNewForm(string idEmployee)
+        private void OpenNewForm(int idEmployee)
         {
             //Hide this form. This operration doesn't affect to performance
             this.Hide();
 
             CashRegister cashRegisterForm = new CashRegister();
 
-            cashRegisterForm.GetIdEmployee(idEmployee);
+            cashRegisterForm.GetEmployee(idEmployee);
 
             //Open next form. 
             //Until the next form won't be closed, this function will be waiting to make this.Close();

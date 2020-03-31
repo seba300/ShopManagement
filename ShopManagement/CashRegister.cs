@@ -19,13 +19,13 @@ namespace ShopManagement
         //List of products
         private List<ReceiptList> receiptLists = new List<ReceiptList>();
         //Employeer id
-        private string IdEmployee { get; set; }
+        private int IdEmployee { get; set; }
         public CashRegister()
         {
             InitializeComponent();
         }
         //Sign in system is sending here Employeer id to recognize him
-        public void GetIdEmployee(string idEmployee)
+        public void GetEmployee(int idEmployee)
         {
             IdEmployee = idEmployee;
         }
@@ -98,6 +98,22 @@ namespace ShopManagement
         private void CashRegister_Load(object sender, EventArgs e)
         {
             TB_barcode.Select();
+        }
+
+        private void B_closeRegister_Click(object sender, EventArgs e)
+        {
+            CloseOrder();
+            ClearReceipt();
+        }
+
+        private void CloseOrder()
+        {
+            var query = new Query();
+            query.AddOrderToDatabase(receiptLists, IdEmployee);
+        }
+        private void ClearReceipt()
+        {
+            LV_receipt.Items.Clear();
         }
     }
 }
