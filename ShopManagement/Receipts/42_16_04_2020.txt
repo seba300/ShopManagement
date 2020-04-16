@@ -1,0 +1,9 @@
+====RECEIPT====
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Bagietka [200g] q:2 g:4,30zł
+n:Ser Gouda [250g] q:1 g:4,47zł
+n:Ser Edamski [250g] q:1 g:3,35zł
+n:Chleb pełnoziarnisty q:1 g:4,54zł
+n:Szport w sosie pomidorowym w puszce q:1 g:2,30zł
+n:Filety z dorsza q:11 g:382,03zł

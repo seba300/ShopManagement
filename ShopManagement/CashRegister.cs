@@ -112,6 +112,7 @@ namespace ShopManagement
             TB_barcode.Select();
         }
 
+        //TODO : ADD ASYNCH
         private void B_closeRegister_Click(object sender, EventArgs e)
         {
             CloseOrder();
