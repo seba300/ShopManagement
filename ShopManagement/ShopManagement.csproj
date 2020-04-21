@@ -250,10 +250,10 @@
     <None Include="Images\SignInIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CashIcon.png" />
+    <Content Include="Images\CashIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\CashIcon.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

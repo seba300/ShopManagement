@@ -1,6 +1,7 @@
 ﻿using ShopManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -173,6 +174,25 @@ namespace ShopManagement.Data
         public string GetProductName(int idProduct)
         {
             return shopContext.Products.Where(x => x.Idproduct == idProduct).Select(x => x.ProductName).ToList().Last();
+        }
+
+        public void InsertDelivery(string idProduct, string quantity)
+        {
+            CultureInfo cultures = new CultureInfo("en-US");
+
+            if (quantity.Contains(',')) 
+            {
+                quantity = quantity.Replace(',','.');
+            }
+
+            float quan =(float)Convert.ToDecimal(quantity, cultures);
+            int productId = Convert.ToInt32(idProduct);
+
+            var states = shopContext.Products.SingleOrDefault(x => x.Idproduct == productId);
+
+            states.InventoryState += Math.Round(quan,2);
+            
+            shopContext.SaveChanges();
         }
     }
 }

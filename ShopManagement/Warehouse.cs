@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopManagement.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,35 @@ namespace ShopManagement
         public Warehouse()
         {
             InitializeComponent();
-            string[] fruits = { "Apple", "mango", "Grapes", "orange", "Red Orange" };
-            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            textBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            textBox1.AutoCompleteCustomSource.AddRange(fruits);
+
+        }
+
+        private void TB_idProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TB_quantity.Select();
+            }
+        }
+
+        private void TB_quantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!(string.IsNullOrWhiteSpace(TB_idProduct.Text) || string.IsNullOrWhiteSpace(TB_quantity.Text)))
+                {
+                    TB_idProduct.Select();
+
+                    Query query = new Query();
+                    query.InsertDelivery(TB_idProduct.Text, TB_quantity.Text);
+
+                    L_AddConfirm.Text = "Dodano: " + query.GetProductName(Convert.ToInt32(TB_idProduct.Text));
+                    L_AddConfirm.Visible = true;
+
+                    TB_idProduct.Text = null;
+                    TB_quantity.Text = null;
+                }
+            }
         }
     }
 }
