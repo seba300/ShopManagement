@@ -14,7 +14,7 @@ namespace ShopManagement.Models
         public string ProductName { get; set; }
         public string UnitQuantity { get; set; }
         public decimal UnitPrice { get; set; }
-        public double? InventoryState { get; set; }
+        public int InventoryState { get; set; }
         public bool Discontinued { get; set; }
         public int Idcategory { get; set; }
         public decimal Discount { get; set; }

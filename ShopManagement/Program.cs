@@ -25,7 +25,7 @@ namespace ShopManagement
             }
 
             //Application.Run(new Warehouse());
-            Application.Run(new SignIn());
+            //Application.Run(new SignIn());
             //Application.Run(new CashRegister());
             //Application.Run(new InsertWeight());
         }

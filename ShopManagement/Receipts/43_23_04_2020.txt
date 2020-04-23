@@ -1,0 +1,7 @@
+====RECEIPT====
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Bagietka [200g] q:1 g:2,15zł
+n:Ser Gouda [250g] q:1 g:4,47zł
+n:Porcja Rosołowa Wołowa q:1 g:11,04zł
+n:Kasza trójkolorowa q:1 g:2,13zł

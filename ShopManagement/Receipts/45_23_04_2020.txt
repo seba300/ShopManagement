@@ -1,0 +1,8 @@
+====RECEIPT====
+n:Chleb wiejski q:1 g:4,75zł
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Serek twarogowy q:1 g:1,12zł
+n:Ser Camembert q:1 g:2,69zł
+n:Mleko q:1 g:2,24zł
+n:Ser Edamski q:1 g:3,35zł

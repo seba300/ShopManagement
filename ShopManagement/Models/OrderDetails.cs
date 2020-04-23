@@ -8,7 +8,7 @@ namespace ShopManagement.Models
         public int Idorder { get; set; }
         public int Idproduct { get; set; }
         public decimal UnitPrice { get; set; }
-        public double? Quantity { get; set; }
+        public int Quantity { get; set; }
         public short Vat { get; set; }
         public decimal Discount { get; set; }
 

@@ -142,7 +142,7 @@ namespace ShopManagement.Data
 
                 foreach (var quan in product)
                 {
-                    orderDetails.Quantity += Math.Round(quan.Quantity, 2);
+                    orderDetails.Quantity += quan.Quantity;
                 }
 
                 orderDetailsList.Add(orderDetails);
@@ -166,7 +166,7 @@ namespace ShopManagement.Data
             foreach (var item in groupedReceiptLists)
             {
                 var product = shopContext.Products.SingleOrDefault(x => x.Idproduct == item.Idproduct);
-                product.InventoryState -= Math.Round(item.Quantity,2);
+                product.InventoryState -= item.Quantity;
                 shopContext.SaveChanges();
             }
         }
@@ -176,21 +176,12 @@ namespace ShopManagement.Data
             return shopContext.Products.Where(x => x.Idproduct == idProduct).Select(x => x.ProductName).ToList().Last();
         }
 
-        public void InsertDelivery(string idProduct, string quantity)
+        public void InsertDelivery(int idProduct, int quantity)
         {
-            CultureInfo cultures = new CultureInfo("en-US");
 
-            if (quantity.Contains(',')) 
-            {
-                quantity = quantity.Replace(',','.');
-            }
+            var states = shopContext.Products.SingleOrDefault(x => x.Idproduct == idProduct);
 
-            float quan =(float)Convert.ToDecimal(quantity, cultures);
-            int productId = Convert.ToInt32(idProduct);
-
-            var states = shopContext.Products.SingleOrDefault(x => x.Idproduct == productId);
-
-            states.InventoryState += Math.Round(quan,2);
+            states.InventoryState += quantity;
             
             shopContext.SaveChanges();
         }

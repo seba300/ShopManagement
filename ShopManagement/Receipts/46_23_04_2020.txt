@@ -1,0 +1,3 @@
+====RECEIPT====
+n:Mięso z jelenia q:2 g:17,32zł
+n:Porcja Rosołowa Wołowa q:1 g:11,04zł

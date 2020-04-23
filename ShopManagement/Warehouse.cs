@@ -16,7 +16,6 @@ namespace ShopManagement
         public Warehouse()
         {
             InitializeComponent();
-
         }
 
         private void TB_idProduct_KeyDown(object sender, KeyEventArgs e)
@@ -35,10 +34,13 @@ namespace ShopManagement
                 {
                     TB_idProduct.Select();
 
-                    Query query = new Query();
-                    query.InsertDelivery(TB_idProduct.Text, TB_quantity.Text);
+                    int idProduct = Convert.ToInt32(TB_idProduct.Text);
+                    int quantity = Convert.ToInt32(TB_quantity.Text);
 
-                    L_AddConfirm.Text = "Dodano: " + query.GetProductName(Convert.ToInt32(TB_idProduct.Text));
+                    Query query = new Query();
+                    query.InsertDelivery(idProduct, quantity);
+
+                    L_AddConfirm.Text = "Dodano: " + query.GetProductName(idProduct);
                     L_AddConfirm.Visible = true;
 
                     TB_idProduct.Text = null;

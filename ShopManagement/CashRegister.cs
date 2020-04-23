@@ -51,7 +51,7 @@ namespace ShopManagement
         {
             string[] row = {
                 listItem.ProductName,
-                listItem.Quantity + listItem.UnitQuantity,
+                listItem.Quantity + "x " + listItem.UnitQuantity,
                 listItem.UnitPrice.ToString(),
                 listItem.Vat.ToString(),
                 listItem.Discount.ToString(),
@@ -71,20 +71,6 @@ namespace ShopManagement
                 //Get info of the product with specified ID
                 receiptLists.Add(queryResult.GetProductInfo(Idproduct));
 
-                //If last item of the list has 'kg' then employeer must set how many kilos
-                if (receiptLists.Last().UnitQuantity == "kg")
-                {
-                    InsertWeight insertWeight = new InsertWeight();
-                    insertWeight.ShowDialog();
-
-                    //Get kilos
-                    receiptLists.Last().Quantity = insertWeight.GetWeight();
-                }
-                else
-                {
-                    receiptLists.Last().Quantity = 1f;
-                }
-
                 receiptLists.Last().Gross = GetGross(receiptLists.Last());
 
                 AddToRegisterListView(receiptLists.Last());
@@ -98,7 +84,7 @@ namespace ShopManagement
         //Calculation of the gross amount
         private decimal GetGross(ReceiptList listItem)
         {
-            decimal quantity = (decimal)listItem.Quantity;
+            int quantity = listItem.Quantity;
             decimal price = listItem.UnitPrice - (listItem.UnitPrice * (listItem.Discount / 100));//Cena = cena jedn z rabatem
             decimal value = price * quantity; //Wartosc = price *ilosc
             decimal gross = value + (value * ((decimal)listItem.Vat / 100));//Brutto = wartosc+vat

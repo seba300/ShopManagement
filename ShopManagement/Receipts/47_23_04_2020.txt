@@ -1,0 +1,6 @@
+====RECEIPT====
+n:Szport w sosie pomidorowym w puszce q:1 g:2,30zł
+n:Chleb wiejski q:1 g:4,75zł
+n:Mięta q:1 g:6,11zł
+n:Serek twarogowy q:2 g:2,24zł
+n:Baton Cini Minis q:1 g:62,99zł

@@ -65,13 +65,13 @@
             // ProdCol
             // 
             this.ProdCol.Text = "Product";
-            this.ProdCol.Width = 280;
+            this.ProdCol.Width = 229;
             // 
             // QuanCol
             // 
             this.QuanCol.Text = "Quantity";
             this.QuanCol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.QuanCol.Width = 52;
+            this.QuanCol.Width = 105;
             // 
             // UnitPriceCol
             // 
