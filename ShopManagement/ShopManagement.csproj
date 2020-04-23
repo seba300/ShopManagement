@@ -171,6 +171,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPanel.Designer.cs">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\DbConnection.cs" />
     <Compile Include="CashRegister.cs">
       <SubType>Form</SubType>
@@ -180,11 +186,41 @@
     </Compile>
     <Compile Include="Data\Query.cs" />
     <Compile Include="Data\ShopContext.cs" />
+    <Compile Include="Employee\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\AddEmployee.Designer.cs">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
     <Compile Include="InsertWeight.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InsertWeight.Designer.cs">
       <DependentUpon>InsertWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\AddProduct.Designer.cs">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ModifyCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\ModifyCategory.Designer.cs">
+      <DependentUpon>ModifyCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product\ModifyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product\ModifyProduct.Designer.cs">
+      <DependentUpon>ModifyProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ReceiptList.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -207,8 +243,14 @@
     <Compile Include="Warehouse.designer.cs">
       <DependentUpon>Warehouse.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminPanel.resx">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CashRegister.resx">
       <DependentUpon>CashRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\AddEmployee.resx">
+      <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InsertWeight.resx">
       <DependentUpon>InsertWeight.cs</DependentUpon>
