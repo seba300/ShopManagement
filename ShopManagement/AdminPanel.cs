@@ -16,6 +16,7 @@ namespace ShopManagement
 {
     public partial class AdminPanel : Form
     {
+        private static bool IsOpen { get; set; } = false;
         public AdminPanel()
         {
             InitializeComponent();
@@ -26,32 +27,59 @@ namespace ShopManagement
 
         private void addEmployeeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            CloseActiveChildForms();
+            
             AddEmployee addEmployee = new AddEmployee();
 
             //Set addEmployee form the kid form from AdminPanel form
             addEmployee.MdiParent = this;
-            addEmployee.Dock = DockStyle.Fill;
             addEmployee.Show();
+
         }
 
         private void addProductToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            CloseActiveChildForms();
+            
+            AddProduct addProduct = new AddProduct();
+            addProduct.MdiParent = this;
+            
+            addProduct.Show();
         }
 
         private void addCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseActiveChildForms();
 
+            AddCategory addCategory = new AddCategory();
+            addCategory.MdiParent = this;
+            addCategory.Show();
         }
 
         private void modifyProductToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            CloseActiveChildForms();
 
+            ModifyProduct modifyProduct = new ModifyProduct();
+            modifyProduct.MdiParent = this;
+            modifyProduct.Show();
         }
 
         private void modifyCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseActiveChildForms();
 
+            ModifyCategory modifyCategory = new ModifyCategory();
+            modifyCategory.MdiParent = this;
+            modifyCategory.Show();
+        }
+
+        private void CloseActiveChildForms()
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Close();
+            }
         }
     }
 }

@@ -19,12 +19,6 @@ namespace ShopManagement.Employee
             InitializeComponent();
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AddEmployeePhoto(4, @"C:\Users\Sebastian\source\repos\ShopManagement\ShopManagement\Images\SignInIcon.png");
-        }
-
         private void B_choosePhoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -57,6 +51,11 @@ namespace ShopManagement.Employee
             employee.Photo = image;
 
             query.SaveDBChanges();
+        }
+
+        private void AddEmployee_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
         }
     }
 }

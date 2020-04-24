@@ -30,14 +30,12 @@
         {
             this.TB_name = new System.Windows.Forms.TextBox();
             this.TB_surname = new System.Windows.Forms.TextBox();
-            this.TB_birthDate = new System.Windows.Forms.TextBox();
             this.TB_address = new System.Windows.Forms.TextBox();
             this.TB_zipCode = new System.Windows.Forms.TextBox();
             this.TB_city = new System.Windows.Forms.TextBox();
             this.TB_phoneNumber = new System.Windows.Forms.TextBox();
             this.TB_region = new System.Windows.Forms.TextBox();
             this.TB_position = new System.Windows.Forms.TextBox();
-            this.TB_employmentDate = new System.Windows.Forms.TextBox();
             this.TB_chief = new System.Windows.Forms.TextBox();
             this.TB_comment = new System.Windows.Forms.TextBox();
             this.PB_employeePhoto = new System.Windows.Forms.PictureBox();
@@ -54,6 +52,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.B_choosePhoto = new System.Windows.Forms.Button();
+            this.DTP_birthDate = new System.Windows.Forms.DateTimePicker();
+            this.DTP_employmentDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.PB_employeePhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,13 +70,6 @@
             this.TB_surname.Name = "TB_surname";
             this.TB_surname.Size = new System.Drawing.Size(360, 20);
             this.TB_surname.TabIndex = 1;
-            // 
-            // TB_birthDate
-            // 
-            this.TB_birthDate.Location = new System.Drawing.Point(360, 90);
-            this.TB_birthDate.Name = "TB_birthDate";
-            this.TB_birthDate.Size = new System.Drawing.Size(360, 20);
-            this.TB_birthDate.TabIndex = 2;
             // 
             // TB_address
             // 
@@ -120,13 +113,6 @@
             this.TB_position.Size = new System.Drawing.Size(360, 20);
             this.TB_position.TabIndex = 8;
             // 
-            // TB_employmentDate
-            // 
-            this.TB_employmentDate.Location = new System.Drawing.Point(360, 300);
-            this.TB_employmentDate.Name = "TB_employmentDate";
-            this.TB_employmentDate.Size = new System.Drawing.Size(360, 20);
-            this.TB_employmentDate.TabIndex = 9;
-            // 
             // TB_chief
             // 
             this.TB_chief.Location = new System.Drawing.Point(360, 330);
@@ -139,6 +125,7 @@
             this.TB_comment.Location = new System.Drawing.Point(360, 360);
             this.TB_comment.Multiline = true;
             this.TB_comment.Name = "TB_comment";
+            this.TB_comment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TB_comment.Size = new System.Drawing.Size(360, 40);
             this.TB_comment.TabIndex = 11;
             // 
@@ -147,7 +134,7 @@
             this.PB_employeePhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PB_employeePhoto.Location = new System.Drawing.Point(23, 30);
             this.PB_employeePhoto.Name = "PB_employeePhoto";
-            this.PB_employeePhoto.Size = new System.Drawing.Size(200, 200);
+            this.PB_employeePhoto.Size = new System.Drawing.Size(200, 300);
             this.PB_employeePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PB_employeePhoto.TabIndex = 13;
             this.PB_employeePhoto.TabStop = false;
@@ -246,9 +233,9 @@
             // 
             this.label12.Location = new System.Drawing.Point(260, 300);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 20);
+            this.label12.Size = new System.Drawing.Size(100, 20);
             this.label12.TabIndex = 25;
-            this.label12.Text = "Employment Date:";
+            this.label12.Text = "Employment Date:*";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label13
@@ -261,12 +248,30 @@
             // 
             // B_choosePhoto
             // 
-            this.B_choosePhoto.Location = new System.Drawing.Point(23, 250);
+            this.B_choosePhoto.Location = new System.Drawing.Point(23, 350);
             this.B_choosePhoto.Name = "B_choosePhoto";
             this.B_choosePhoto.Size = new System.Drawing.Size(100, 30);
             this.B_choosePhoto.TabIndex = 28;
             this.B_choosePhoto.Text = "Choose photo";
             this.B_choosePhoto.Click += new System.EventHandler(this.B_choosePhoto_Click);
+            // 
+            // DTP_birthDate
+            // 
+            this.DTP_birthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_birthDate.Location = new System.Drawing.Point(360, 90);
+            this.DTP_birthDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.DTP_birthDate.Name = "DTP_birthDate";
+            this.DTP_birthDate.Size = new System.Drawing.Size(100, 20);
+            this.DTP_birthDate.TabIndex = 29;
+            this.DTP_birthDate.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            // 
+            // DTP_employmentDate
+            // 
+            this.DTP_employmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_employmentDate.Location = new System.Drawing.Point(360, 300);
+            this.DTP_employmentDate.Name = "DTP_employmentDate";
+            this.DTP_employmentDate.Size = new System.Drawing.Size(100, 20);
+            this.DTP_employmentDate.TabIndex = 30;
             // 
             // AddEmployee
             // 
@@ -275,6 +280,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.DTP_employmentDate);
+            this.Controls.Add(this.DTP_birthDate);
             this.Controls.Add(this.B_choosePhoto);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -291,14 +298,12 @@
             this.Controls.Add(this.PB_employeePhoto);
             this.Controls.Add(this.TB_comment);
             this.Controls.Add(this.TB_chief);
-            this.Controls.Add(this.TB_employmentDate);
             this.Controls.Add(this.TB_position);
             this.Controls.Add(this.TB_region);
             this.Controls.Add(this.TB_phoneNumber);
             this.Controls.Add(this.TB_city);
             this.Controls.Add(this.TB_zipCode);
             this.Controls.Add(this.TB_address);
-            this.Controls.Add(this.TB_birthDate);
             this.Controls.Add(this.TB_surname);
             this.Controls.Add(this.TB_name);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -308,6 +313,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PB_employeePhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -318,14 +324,12 @@
 
         private System.Windows.Forms.TextBox TB_name;
         private System.Windows.Forms.TextBox TB_surname;
-        private System.Windows.Forms.TextBox TB_birthDate;
         private System.Windows.Forms.TextBox TB_address;
         private System.Windows.Forms.TextBox TB_zipCode;
         private System.Windows.Forms.TextBox TB_city;
         private System.Windows.Forms.TextBox TB_phoneNumber;
         private System.Windows.Forms.TextBox TB_region;
         private System.Windows.Forms.TextBox TB_position;
-        private System.Windows.Forms.TextBox TB_employmentDate;
         private System.Windows.Forms.TextBox TB_chief;
         private System.Windows.Forms.TextBox TB_comment;
         private System.Windows.Forms.PictureBox PB_employeePhoto;
@@ -342,5 +346,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button B_choosePhoto;
+        private System.Windows.Forms.DateTimePicker DTP_employmentDate;
+        private System.Windows.Forms.DateTimePicker DTP_birthDate;
     }
 }
