@@ -186,15 +186,13 @@ namespace ShopManagement.Data
             shopContext.SaveChanges();
         }
 
-        public void AddEmployeePhoto(int idEmployee, string imagePath)
+        public Employees GetEmployeeById(int idEmployee)
         {
-            //Format image to bytes
-            var image = System.IO.File.ReadAllBytes(imagePath);
+            return shopContext.Employees.Where(x => x.Idemployee == idEmployee).SingleOrDefault();
+        }
 
-            //Get employee id
-            var employee = shopContext.Employees.Where(x => x.Idemployee == idEmployee).SingleOrDefault();
-            employee.Photo = image;
-
+        public void SaveDBChanges()
+        {
             shopContext.SaveChanges();
         }
     }

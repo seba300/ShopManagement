@@ -18,20 +18,45 @@ namespace ShopManagement.Employee
         {
             InitializeComponent();
 
-            ShopContext p1 = new ShopContext();
-            var a = p1.Employees.Where(x => x.Idemployee == 4).Select(x => x.Photo).SingleOrDefault();
-
-            MemoryStream ms = new MemoryStream(a);
-            pictureBox1.Image = Image.FromStream(ms);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ShopContext p1 = new ShopContext();
-            var a = p1.Employees.Where(x => x.Idemployee == 4).Select(x=>x.Photo).SingleOrDefault();
+            AddEmployeePhoto(4, @"C:\Users\Sebastian\source\repos\ShopManagement\ShopManagement\Images\SignInIcon.png");
+        }
 
-            MemoryStream ms = new MemoryStream(a);
-            pictureBox1.Image = Image.FromStream(ms);
+        private void B_choosePhoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.bmp; *.png;)|*.jpg; *.jpeg; *.bmp; *.png;";
+            
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                PB_employeePhoto.Image = new Bitmap(open.FileName);
+            }
+        }
+
+        private void DisplayEmployeePhotoFromDB(int idEmployee)
+        {
+            Query query = new Query();
+            var employee = query.GetEmployeeById(idEmployee);
+
+            MemoryStream ms = new MemoryStream(employee.Photo);
+            PB_employeePhoto.Image = Image.FromStream(ms);
+        }
+
+        private void AddEmployeePhoto(int idEmployee, string imagePath)
+        {
+            Query query = new Query();
+
+            //Format image to bytes
+            var image = System.IO.File.ReadAllBytes(imagePath);
+
+            //Get employee id
+            var employee = query.GetEmployeeById(idEmployee);
+            employee.Photo = image;
+
+            query.SaveDBChanges();
         }
     }
 }

@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TB_name = new System.Windows.Forms.TextBox();
+            this.TB_surname = new System.Windows.Forms.TextBox();
+            this.TB_birthDate = new System.Windows.Forms.TextBox();
+            this.TB_address = new System.Windows.Forms.TextBox();
+            this.TB_zipCode = new System.Windows.Forms.TextBox();
+            this.TB_city = new System.Windows.Forms.TextBox();
+            this.TB_phoneNumber = new System.Windows.Forms.TextBox();
+            this.TB_region = new System.Windows.Forms.TextBox();
+            this.TB_position = new System.Windows.Forms.TextBox();
+            this.TB_employmentDate = new System.Windows.Forms.TextBox();
+            this.TB_chief = new System.Windows.Forms.TextBox();
+            this.TB_comment = new System.Windows.Forms.TextBox();
+            this.PB_employeePhoto = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,104 +53,104 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.B_choosePhoto = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_employeePhoto)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TB_name
             // 
-            this.textBox1.Location = new System.Drawing.Point(360, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(360, 20);
-            this.textBox1.TabIndex = 0;
+            this.TB_name.Location = new System.Drawing.Point(360, 30);
+            this.TB_name.Name = "TB_name";
+            this.TB_name.Size = new System.Drawing.Size(360, 20);
+            this.TB_name.TabIndex = 0;
             // 
-            // textBox2
+            // TB_surname
             // 
-            this.textBox2.Location = new System.Drawing.Point(360, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(360, 20);
-            this.textBox2.TabIndex = 1;
+            this.TB_surname.Location = new System.Drawing.Point(360, 60);
+            this.TB_surname.Name = "TB_surname";
+            this.TB_surname.Size = new System.Drawing.Size(360, 20);
+            this.TB_surname.TabIndex = 1;
             // 
-            // textBox3
+            // TB_birthDate
             // 
-            this.textBox3.Location = new System.Drawing.Point(360, 90);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(360, 20);
-            this.textBox3.TabIndex = 2;
+            this.TB_birthDate.Location = new System.Drawing.Point(360, 90);
+            this.TB_birthDate.Name = "TB_birthDate";
+            this.TB_birthDate.Size = new System.Drawing.Size(360, 20);
+            this.TB_birthDate.TabIndex = 2;
             // 
-            // textBox4
+            // TB_address
             // 
-            this.textBox4.Location = new System.Drawing.Point(360, 120);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(360, 20);
-            this.textBox4.TabIndex = 3;
+            this.TB_address.Location = new System.Drawing.Point(360, 120);
+            this.TB_address.Name = "TB_address";
+            this.TB_address.Size = new System.Drawing.Size(360, 20);
+            this.TB_address.TabIndex = 3;
             // 
-            // textBox5
+            // TB_zipCode
             // 
-            this.textBox5.Location = new System.Drawing.Point(360, 150);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(360, 20);
-            this.textBox5.TabIndex = 4;
+            this.TB_zipCode.Location = new System.Drawing.Point(360, 150);
+            this.TB_zipCode.Name = "TB_zipCode";
+            this.TB_zipCode.Size = new System.Drawing.Size(360, 20);
+            this.TB_zipCode.TabIndex = 4;
             // 
-            // textBox6
+            // TB_city
             // 
-            this.textBox6.Location = new System.Drawing.Point(360, 180);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(360, 20);
-            this.textBox6.TabIndex = 5;
+            this.TB_city.Location = new System.Drawing.Point(360, 180);
+            this.TB_city.Name = "TB_city";
+            this.TB_city.Size = new System.Drawing.Size(360, 20);
+            this.TB_city.TabIndex = 5;
             // 
-            // textBox7
+            // TB_phoneNumber
             // 
-            this.textBox7.Location = new System.Drawing.Point(360, 210);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(360, 20);
-            this.textBox7.TabIndex = 6;
+            this.TB_phoneNumber.Location = new System.Drawing.Point(360, 210);
+            this.TB_phoneNumber.Name = "TB_phoneNumber";
+            this.TB_phoneNumber.Size = new System.Drawing.Size(360, 20);
+            this.TB_phoneNumber.TabIndex = 6;
             // 
-            // textBox8
+            // TB_region
             // 
-            this.textBox8.Location = new System.Drawing.Point(360, 240);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(360, 20);
-            this.textBox8.TabIndex = 7;
+            this.TB_region.Location = new System.Drawing.Point(360, 240);
+            this.TB_region.Name = "TB_region";
+            this.TB_region.Size = new System.Drawing.Size(360, 20);
+            this.TB_region.TabIndex = 7;
             // 
-            // textBox9
+            // TB_position
             // 
-            this.textBox9.Location = new System.Drawing.Point(360, 270);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(360, 20);
-            this.textBox9.TabIndex = 8;
+            this.TB_position.Location = new System.Drawing.Point(360, 270);
+            this.TB_position.Name = "TB_position";
+            this.TB_position.Size = new System.Drawing.Size(360, 20);
+            this.TB_position.TabIndex = 8;
             // 
-            // textBox10
+            // TB_employmentDate
             // 
-            this.textBox10.Location = new System.Drawing.Point(360, 300);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(360, 20);
-            this.textBox10.TabIndex = 9;
+            this.TB_employmentDate.Location = new System.Drawing.Point(360, 300);
+            this.TB_employmentDate.Name = "TB_employmentDate";
+            this.TB_employmentDate.Size = new System.Drawing.Size(360, 20);
+            this.TB_employmentDate.TabIndex = 9;
             // 
-            // textBox11
+            // TB_chief
             // 
-            this.textBox11.Location = new System.Drawing.Point(360, 330);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(360, 20);
-            this.textBox11.TabIndex = 10;
+            this.TB_chief.Location = new System.Drawing.Point(360, 330);
+            this.TB_chief.Name = "TB_chief";
+            this.TB_chief.Size = new System.Drawing.Size(360, 20);
+            this.TB_chief.TabIndex = 10;
             // 
-            // textBox12
+            // TB_comment
             // 
-            this.textBox12.Location = new System.Drawing.Point(360, 360);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(360, 40);
-            this.textBox12.TabIndex = 11;
+            this.TB_comment.Location = new System.Drawing.Point(360, 360);
+            this.TB_comment.Multiline = true;
+            this.TB_comment.Name = "TB_comment";
+            this.TB_comment.Size = new System.Drawing.Size(360, 40);
+            this.TB_comment.TabIndex = 11;
             // 
-            // pictureBox1
+            // PB_employeePhoto
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PB_employeePhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PB_employeePhoto.Location = new System.Drawing.Point(23, 30);
+            this.PB_employeePhoto.Name = "PB_employeePhoto";
+            this.PB_employeePhoto.Size = new System.Drawing.Size(200, 200);
+            this.PB_employeePhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PB_employeePhoto.TabIndex = 13;
+            this.PB_employeePhoto.TabStop = false;
             // 
             // label1
             // 
@@ -259,15 +259,14 @@
             this.label13.TabIndex = 26;
             this.label13.Text = "Comment:";
             // 
-            // button1
+            // B_choosePhoto
             // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.B_choosePhoto.Location = new System.Drawing.Point(23, 250);
+            this.B_choosePhoto.Name = "B_choosePhoto";
+            this.B_choosePhoto.Size = new System.Drawing.Size(100, 30);
+            this.B_choosePhoto.TabIndex = 28;
+            this.B_choosePhoto.Text = "Choose photo";
+            this.B_choosePhoto.Click += new System.EventHandler(this.B_choosePhoto_Click);
             // 
             // AddEmployee
             // 
@@ -276,7 +275,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.B_choosePhoto);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -289,19 +288,19 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PB_employeePhoto);
+            this.Controls.Add(this.TB_comment);
+            this.Controls.Add(this.TB_chief);
+            this.Controls.Add(this.TB_employmentDate);
+            this.Controls.Add(this.TB_position);
+            this.Controls.Add(this.TB_region);
+            this.Controls.Add(this.TB_phoneNumber);
+            this.Controls.Add(this.TB_city);
+            this.Controls.Add(this.TB_zipCode);
+            this.Controls.Add(this.TB_address);
+            this.Controls.Add(this.TB_birthDate);
+            this.Controls.Add(this.TB_surname);
+            this.Controls.Add(this.TB_name);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -309,7 +308,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_employeePhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,19 +316,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox TB_name;
+        private System.Windows.Forms.TextBox TB_surname;
+        private System.Windows.Forms.TextBox TB_birthDate;
+        private System.Windows.Forms.TextBox TB_address;
+        private System.Windows.Forms.TextBox TB_zipCode;
+        private System.Windows.Forms.TextBox TB_city;
+        private System.Windows.Forms.TextBox TB_phoneNumber;
+        private System.Windows.Forms.TextBox TB_region;
+        private System.Windows.Forms.TextBox TB_position;
+        private System.Windows.Forms.TextBox TB_employmentDate;
+        private System.Windows.Forms.TextBox TB_chief;
+        private System.Windows.Forms.TextBox TB_comment;
+        private System.Windows.Forms.PictureBox PB_employeePhoto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -342,6 +341,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button B_choosePhoto;
     }
 }
