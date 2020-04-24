@@ -185,5 +185,17 @@ namespace ShopManagement.Data
             
             shopContext.SaveChanges();
         }
+
+        public void AddEmployeePhoto(int idEmployee, string imagePath)
+        {
+            //Format image to bytes
+            var image = System.IO.File.ReadAllBytes(imagePath);
+
+            //Get employee id
+            var employee = shopContext.Employees.Where(x => x.Idemployee == idEmployee).SingleOrDefault();
+            employee.Photo = image;
+
+            shopContext.SaveChanges();
+        }
     }
 }
