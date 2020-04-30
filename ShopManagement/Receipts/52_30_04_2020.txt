@@ -1,0 +1,7 @@
+====RECEIPT====
+n:Porcja Rosołowa Wołowa q:3 g:33,12zł
+n:Pieprz czarny q:1 g:3,05zł
+n:Szport w sosie pomidorowym w puszce q:1 g:2,30zł
+n:Chleb wiejski q:1 g:4,75zł
+n:Chleb graham q:1 g:3,89zł
+n:Mięta q:1 g:6,11zł

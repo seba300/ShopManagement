@@ -50,12 +50,25 @@ namespace ShopManagement.Product
 
                 product.ProductName = TB_productName.Text;
                 product.UnitQuantity = TB_unitQuantity.Text;
-                product.UnitPrice = Math.Round(Convert.ToDecimal(TB_unitPrice.Text, new CultureInfo("en-US")),2);
+                product.UnitPrice = Math.Round(Convert.ToDecimal(TB_unitPrice.Text),2);
                 product.Idcategory = Convert.ToInt32(TB_idCategory.Text);
-                product.Discount = Math.Round(Convert.ToDecimal(TB_discount.Text, new CultureInfo("en-US")), 2);
+                product.Discount = Math.Round(Convert.ToDecimal(TB_discount.Text), 2);
 
                 Query query = new Query();
                 query.SaveProductInDB(product);
+
+                ClearControls();
+            }
+        }
+        private void ClearControls()
+        {
+            foreach (Control item in this.Controls)
+            {
+                if (item is TextBox)
+                {
+                    TextBox tb = (TextBox)item;
+                    tb.Text = null;
+                }
             }
         }
 

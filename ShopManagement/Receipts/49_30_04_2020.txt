@@ -1,0 +1,6 @@
+====RECEIPT====
+n:Chleb pełnoziarnisty q:1 g:4,54zł
+n:Chleb graham q:1 g:3,89zł
+n:Kajzerka q:1 g:0,22zł
+n:Porcja Rosołowa Wołowa q:3 g:33,12zł
+n:Filety z dorsza q:1 g:34,73zł
