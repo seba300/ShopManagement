@@ -89,6 +89,7 @@
             this.addCategoryToolStripMenuItem.Name = "addCategoryToolStripMenuItem";
             this.addCategoryToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.addCategoryToolStripMenuItem.Text = "Add category";
+            this.addCategoryToolStripMenuItem.Enabled = false;
             this.addCategoryToolStripMenuItem.Click += new System.EventHandler(this.addCategoryToolStripMenuItem_Click);
             // 
             // modifyProductToolStripMenuItem1
@@ -96,6 +97,7 @@
             this.modifyProductToolStripMenuItem1.Name = "modifyProductToolStripMenuItem1";
             this.modifyProductToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.modifyProductToolStripMenuItem1.Text = "Modify product";
+            this.modifyProductToolStripMenuItem1.Enabled = false;
             this.modifyProductToolStripMenuItem1.Click += new System.EventHandler(this.modifyProductToolStripMenuItem1_Click);
             // 
             // modifyCategoryToolStripMenuItem
@@ -103,6 +105,7 @@
             this.modifyCategoryToolStripMenuItem.Name = "modifyCategoryToolStripMenuItem";
             this.modifyCategoryToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.modifyCategoryToolStripMenuItem.Text = "Modify category";
+            this.modifyCategoryToolStripMenuItem.Enabled = false;
             this.modifyCategoryToolStripMenuItem.Click += new System.EventHandler(this.modifyCategoryToolStripMenuItem_Click);
             // 
             // AdminPanel

@@ -190,9 +190,38 @@ namespace ShopManagement.Data
         {
             return shopContext.Employees.Where(x => x.Idemployee == idEmployee).SingleOrDefault();
         }
-
-        public void SaveDBChanges()
+        public void SignUpEmployee(string name, string surname, DateTime birthDate, string address,
+                                   string zipcode, string city, string phoneNumber, string region,
+                                   string position, DateTime employmentDate, int chief, string comment, byte[] imagePath)
         {
+            Employees employee = new Employees();
+
+            employee.Name = name;
+            employee.Surname = surname;
+            employee.BirthDate = birthDate;
+            employee.Address = address;
+            employee.ZipCode = zipcode;
+            employee.City = city;
+            employee.PhoneNumber = phoneNumber;
+            employee.Region = region;
+            employee.Position = position;
+            employee.EmploymentDate = employmentDate;
+            employee.Chief = chief;
+            employee.Comments = comment;
+            employee.Photo = imagePath;
+
+            shopContext.Employees.Add(employee);
+            shopContext.SaveChanges();
+        }
+
+        public string GetWorkPosition(int idEmployee)
+        {
+            return shopContext.Employees.SingleOrDefault(x => x.Idemployee==idEmployee).Position;
+        }
+
+        public void SaveProductInDB(Products product)
+        {
+            shopContext.Products.Add(product);
             shopContext.SaveChanges();
         }
     }

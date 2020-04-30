@@ -255,6 +255,9 @@
     <EmbeddedResource Include="InsertWeight.resx">
       <DependentUpon>InsertWeight.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Product\AddProduct.resx">
+      <DependentUpon>AddProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>

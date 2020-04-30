@@ -54,6 +54,9 @@
             this.B_choosePhoto = new System.Windows.Forms.Button();
             this.DTP_birthDate = new System.Windows.Forms.DateTimePicker();
             this.DTP_employmentDate = new System.Windows.Forms.DateTimePicker();
+            this.B_signUpEmployee = new System.Windows.Forms.Button();
+            this.L_emptyFields = new System.Windows.Forms.Label();
+            this.B_closeChildForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PB_employeePhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -273,6 +276,36 @@
             this.DTP_employmentDate.Size = new System.Drawing.Size(100, 20);
             this.DTP_employmentDate.TabIndex = 30;
             // 
+            // B_signUpEmployee
+            // 
+            this.B_signUpEmployee.Location = new System.Drawing.Point(620, 420);
+            this.B_signUpEmployee.Name = "B_signUpEmployee";
+            this.B_signUpEmployee.Size = new System.Drawing.Size(100, 30);
+            this.B_signUpEmployee.TabIndex = 31;
+            this.B_signUpEmployee.Text = "Add user";
+            this.B_signUpEmployee.Click += new System.EventHandler(this.B_signUpEmployee_Click);
+            // 
+            // L_emptyFields
+            // 
+            this.L_emptyFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.L_emptyFields.ForeColor = System.Drawing.Color.Red;
+            this.L_emptyFields.Location = new System.Drawing.Point(258, 420);
+            this.L_emptyFields.Name = "L_emptyFields";
+            this.L_emptyFields.Size = new System.Drawing.Size(360, 30);
+            this.L_emptyFields.TabIndex = 32;
+            this.L_emptyFields.Text = "Fill blank fields";
+            this.L_emptyFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_emptyFields.Visible = false;
+            // 
+            // B_closeChildForm
+            // 
+            this.B_closeChildForm.Location = new System.Drawing.Point(620, 470);
+            this.B_closeChildForm.Name = "B_closeChildForm";
+            this.B_closeChildForm.Size = new System.Drawing.Size(100, 30);
+            this.B_closeChildForm.TabIndex = 33;
+            this.B_closeChildForm.Text = "Close";
+            this.B_closeChildForm.Click += new System.EventHandler(this.B_closeChildForm_Click);
+            // 
             // AddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +313,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.L_emptyFields);
+            this.Controls.Add(this.B_closeChildForm);
+            this.Controls.Add(this.B_signUpEmployee);
             this.Controls.Add(this.DTP_employmentDate);
             this.Controls.Add(this.DTP_birthDate);
             this.Controls.Add(this.B_choosePhoto);
@@ -348,5 +384,8 @@
         private System.Windows.Forms.Button B_choosePhoto;
         private System.Windows.Forms.DateTimePicker DTP_employmentDate;
         private System.Windows.Forms.DateTimePicker DTP_birthDate;
+        private System.Windows.Forms.Button B_signUpEmployee;
+        private System.Windows.Forms.Button B_closeChildForm;
+        private System.Windows.Forms.Label L_emptyFields;
     }
 }

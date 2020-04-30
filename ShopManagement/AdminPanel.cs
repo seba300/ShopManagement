@@ -16,7 +16,6 @@ namespace ShopManagement
 {
     public partial class AdminPanel : Form
     {
-        private static bool IsOpen { get; set; } = false;
         public AdminPanel()
         {
             InitializeComponent();
@@ -28,22 +27,21 @@ namespace ShopManagement
         private void addEmployeeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CloseActiveChildForms();
-            
+
             AddEmployee addEmployee = new AddEmployee();
 
             //Set addEmployee form the kid form from AdminPanel form
             addEmployee.MdiParent = this;
             addEmployee.Show();
-
         }
 
         private void addProductToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CloseActiveChildForms();
-            
+
             AddProduct addProduct = new AddProduct();
             addProduct.MdiParent = this;
-            
+
             addProduct.Show();
         }
 
